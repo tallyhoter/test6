@@ -1,4 +1,4 @@
-libs.bitcoin.networks.shadow = {
+bitcoinjs.bitcoin.networks.shadow = {
   messagePrefix: 'unused',
   bip32: {
     public: 0xEE80286A,
@@ -9,7 +9,7 @@ libs.bitcoin.networks.shadow = {
   wif: 0xbf
 };
 
-libs.bitcoin.networks.shadowtn = {
+bitcoinjs.bitcoin.networks.shadowtn = {
   messagePrefix: 'unused',
   bip32: {
     public: 0x76C0FDFB,
@@ -20,7 +20,7 @@ libs.bitcoin.networks.shadowtn = {
   wif: 0xff
 };
 
-libs.bitcoin.networks.clam = {
+bitcoinjs.bitcoin.networks.clam = {
   messagePrefix: 'unused',
   bip32: {
     public: 0xa8c26d64,
@@ -31,7 +31,7 @@ libs.bitcoin.networks.clam = {
   wif: 0x85
 };
 
-libs.bitcoin.networks.crown = {
+bitcoinjs.bitcoin.networks.crown = {
   messagePrefix: 'unused',
   bip32: {
     public: 0x0488b21e,
@@ -43,18 +43,18 @@ libs.bitcoin.networks.crown = {
   toNewAddress: function(oldAddress)
   {
     var ALPHABET = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz'
-    var b58 =  libs.basex(ALPHABET);
+    var b58 =  basex(ALPHABET);
 
     var addrBytes = b58.decode(oldAddress);
 
-    var hash160 = libs.buffer.Buffer.from(new Uint16Array(23));
+    var hash160 = new Uint16Array(23);
     hash160[0]= 0x01; //C
     hash160[1]= 0x75; //R
     hash160[2]= 0x07; //W
     addrBytes.copy(hash160, 3, 1, 21);
 
-    var checksum = libs.bitcoin.crypto.hash256(hash160).subarray(0, 4);
-    var binaryAddr = libs.buffer.Buffer.from(new Uint16Array(27));
+    var checksum = bitcoinjs.bitcoin.crypto.hash256(hash160).subarray(0, 4);
+    var binaryAddr = new Uint16Array(27);
     binaryAddr.set(hash160,0);
     checksum.copy(binaryAddr, 23, 0, 4);
     var newAddress = b58.encode(binaryAddr);
@@ -62,7 +62,7 @@ libs.bitcoin.networks.crown = {
   }
 };
 
-libs.bitcoin.networks.dash = {
+bitcoinjs.bitcoin.networks.dash = {
   messagePrefix: 'unused',
   bip32: {
     public: 0x0488b21e,
@@ -73,7 +73,7 @@ libs.bitcoin.networks.dash = {
   wif: 0xcc
 };
 
-libs.bitcoin.networks.maza = {
+bitcoinjs.bitcoin.networks.maza = {
   messagePrefix: 'unused',
   bip32: {
     public: 0x0488b21e,
@@ -84,7 +84,7 @@ libs.bitcoin.networks.maza = {
   wif: 0xe0
 };
 
-libs.bitcoin.networks.dashtn = {
+bitcoinjs.bitcoin.networks.dashtn = {
   messagePrefix: 'unused',
   bip32: {
     public: 0x043587cf,
@@ -95,7 +95,7 @@ libs.bitcoin.networks.dashtn = {
   wif: 0xef
 };
 
-libs.bitcoin.networks.game = {
+bitcoinjs.bitcoin.networks.game = {
   messagePrefix: 'unused',
   bip32: {
     public: 0x0488b21e,
@@ -106,7 +106,7 @@ libs.bitcoin.networks.game = {
   wif: 0xa6
 };
 
-libs.bitcoin.networks.namecoin = {
+bitcoinjs.bitcoin.networks.namecoin = {
   messagePrefix: 'unused',
   bip32: {
     public: 0x0488b21e,
@@ -114,10 +114,10 @@ libs.bitcoin.networks.namecoin = {
   },
   pubKeyHash: 0x34,
   scriptHash: 0x0D,
-  wif: 0xb4
+  wif: 0x80
 };
 
-libs.bitcoin.networks.peercoin = {
+bitcoinjs.bitcoin.networks.peercoin = {
   messagePrefix: 'unused',
   bip32: {
     public: 0x0488b21e,
@@ -128,7 +128,7 @@ libs.bitcoin.networks.peercoin = {
   wif: 0xb7
 };
 
-libs.bitcoin.networks.axe = {
+bitcoinjs.bitcoin.networks.axe = {
   messagePrefix: 'unused',
   bip32: {
     public: 0x0488b21e,
@@ -139,18 +139,7 @@ libs.bitcoin.networks.axe = {
   wif: 0xcc
 };
 
-libs.bitcoin.networks.scribe = {
-  messagePrefix: 'unused',
-  bip32: {
-    public: 0x0488B21E,
-    private: 0x0488ADE4
-  },
-  pubKeyHash: 0x3c,
-  scriptHash: 0x7d,
-  wif: 0x6e
-};
-
-libs.bitcoin.networks.slimcoin = {
+bitcoinjs.bitcoin.networks.slimcoin = {
   messagePrefix: 'unused',
   bip32: {
     public: 0xef6adf10,
@@ -161,7 +150,7 @@ libs.bitcoin.networks.slimcoin = {
   wif: 0x46
 };
 
-libs.bitcoin.networks.slimcointn = {
+bitcoinjs.bitcoin.networks.slimcointn = {
   messagePrefix: 'unused',
   bip32: {
     public: 0x043587CF,
@@ -172,7 +161,7 @@ libs.bitcoin.networks.slimcointn = {
   wif: 0x57
 };
 
-libs.bitcoin.networks.dogecoin = {
+bitcoinjs.bitcoin.networks.dogecoin = {
   messagePrefix: '\x19Dogecoin Signed Message:\n',
   bip32: {
     public: 0x02facafd,
@@ -183,7 +172,7 @@ libs.bitcoin.networks.dogecoin = {
   wif: 0x9e
 };
 
-libs.bitcoin.networks.dogecointestnet = {
+bitcoinjs.bitcoin.networks.dogecointestnet = {
   messagePrefix: '\x19Dogecoin Signed Message:\n',
   bip32: {
     public: 0x043587cf,
@@ -194,7 +183,7 @@ libs.bitcoin.networks.dogecointestnet = {
   wif: 0xf1
 };
 
-libs.bitcoin.networks.denarius = {
+bitcoinjs.bitcoin.networks.denarius = {
   messagePrefix: '\x19Denarius Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -205,7 +194,7 @@ libs.bitcoin.networks.denarius = {
   wif: 0x9e
 };
 
-libs.bitcoin.networks.neblio = {
+bitcoinjs.bitcoin.networks.neblio = {
   messagePrefix: '\x18Neblio Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -216,7 +205,7 @@ libs.bitcoin.networks.neblio = {
   wif: 0xb5
 };
 
-libs.bitcoin.networks.viacoin = {
+bitcoinjs.bitcoin.networks.viacoin = {
   messagePrefix: '\x18Viacoin Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -227,7 +216,7 @@ libs.bitcoin.networks.viacoin = {
   wif: 0xc7
 };
 
-libs.bitcoin.networks.viacointestnet = {
+bitcoinjs.bitcoin.networks.viacointestnet = {
   messagePrefix: '\x18Viacoin Signed Message:\n',
   bip32: {
     public: 0x043587cf,
@@ -238,7 +227,7 @@ libs.bitcoin.networks.viacointestnet = {
   wif: 0xff
 };
 
-libs.bitcoin.networks.gamerscoin = {
+bitcoinjs.bitcoin.networks.gamerscoin = {
   messagePrefix: '\x19Gamerscoin Signed Message:\n',
   bip32: {
     public: 0x019da462,
@@ -249,7 +238,7 @@ libs.bitcoin.networks.gamerscoin = {
   wif: 0xA6
 };
 
-libs.bitcoin.networks.jumbucks = {
+bitcoinjs.bitcoin.networks.jumbucks = {
   messagePrefix: '\x19Jumbucks Signed Message:\n',
   bip32: {
     public: 0x037a689a,
@@ -260,7 +249,7 @@ libs.bitcoin.networks.jumbucks = {
   wif: 0xab
 };
 
-libs.bitcoin.networks.zetacoin = {
+bitcoinjs.bitcoin.networks.zetacoin = {
   messagePrefix: '\x18Zetacoin Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -271,7 +260,7 @@ libs.bitcoin.networks.zetacoin = {
   wif: 0xe0
 };
 
-libs.bitcoin.networks.myriadcoin = {
+bitcoinjs.bitcoin.networks.myriadcoin = {
   messagePrefix: 'unused',
   bip32: {
     public: 0x0488b21e,
@@ -282,7 +271,7 @@ libs.bitcoin.networks.myriadcoin = {
   wif: 0xb2
 };
 
-libs.bitcoin.networks.bolivarcoin = {
+bitcoinjs.bitcoin.networks.bolivarcoin = {
   messagePrefix: 'Bolivarcoin Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -293,7 +282,7 @@ libs.bitcoin.networks.bolivarcoin = {
   wif: 0xD5
 };
 
-libs.bitcoin.networks.onixcoin = {
+bitcoinjs.bitcoin.networks.onixcoin = {
     messagePrefix: 'ONIX Signed Message:\n',
     bip32: {
       public: 0x0488b21e,
@@ -305,7 +294,7 @@ libs.bitcoin.networks.onixcoin = {
 };
 
 
-libs.bitcoin.networks.lkrcoin = {
+bitcoinjs.bitcoin.networks.lkrcoin = {
     messagePrefix: '\x18LKRcoin Signed Message:\n',
     bip32: {
       public: 0x0488b21e,
@@ -316,7 +305,7 @@ libs.bitcoin.networks.lkrcoin = {
     wif: 0xB0
 };
 
-libs.bitcoin.networks.pivx = {
+bitcoinjs.bitcoin.networks.pivx = {
   messagePrefix: 'unused',
   bip32: {
     public: 0x022d2533,
@@ -327,7 +316,7 @@ libs.bitcoin.networks.pivx = {
   wif: 0xd4
 };
 
-libs.bitcoin.networks.pivxtestnet = {
+bitcoinjs.bitcoin.networks.pivxtestnet = {
   messagePrefix: 'unused',
   bip32: {
     public: 0x3a8061a0,
@@ -338,7 +327,7 @@ libs.bitcoin.networks.pivxtestnet = {
   wif: 0xef
 };
 
-libs.bitcoin.networks.fix = {
+bitcoinjs.bitcoin.networks.fix = {
   messagePrefix: 'unused',
   bip32: {
     public: 0x022d2533,
@@ -349,7 +338,7 @@ libs.bitcoin.networks.fix = {
   wif: 0x3C
 };
 
-libs.bitcoin.networks.fixtestnet = {
+bitcoinjs.bitcoin.networks.fixtestnet = {
   messagePrefix: 'unused',
   bip32: {
     public: 0x3a8061a0,
@@ -360,7 +349,7 @@ libs.bitcoin.networks.fixtestnet = {
   wif: 0xED
 };
 
-libs.bitcoin.networks.fujicoin = {
+bitcoinjs.bitcoin.networks.fujicoin = {
   messagePrefix: '\x19FujiCoin Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -371,7 +360,7 @@ libs.bitcoin.networks.fujicoin = {
   wif: 0xa4
 };
 
-libs.bitcoin.networks.nubits = {
+bitcoinjs.bitcoin.networks.nubits = {
   messagePrefix: '\x18Nu Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -382,7 +371,7 @@ libs.bitcoin.networks.nubits = {
   wif: 0x96,
 };
 
-libs.bitcoin.networks.bgold = {
+bitcoinjs.bitcoin.networks.bgold = {
   messagePrefix: '\x1DBitcoin Gold Signed Message:\n',
     bip32: {
       public: 0x0488b21e,
@@ -393,7 +382,7 @@ libs.bitcoin.networks.bgold = {
     wif: 128
 };
 
-libs.bitcoin.networks.monacoin = {
+bitcoinjs.bitcoin.networks.monacoin = {
     messagePrefix: '\x18Monacoin Signed Message:\n',
     bip32: {
       public: 0x0488b21e,
@@ -404,7 +393,7 @@ libs.bitcoin.networks.monacoin = {
     wif: 0xb0
 };
 
-libs.bitcoin.networks.litecoinXprv = {
+bitcoinjs.bitcoin.networks.litecoinXprv = {
     messagePrefix: '\x19Litecoin Signed Message:\n',
     bip32: {
       public: 0x0488b21e,
@@ -415,7 +404,7 @@ libs.bitcoin.networks.litecoinXprv = {
     wif: 0xb0
 };
 
-libs.bitcoin.networks.komodo = {
+bitcoinjs.bitcoin.networks.komodo = {
   messagePrefix: '\x18Komodo Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -426,7 +415,7 @@ libs.bitcoin.networks.komodo = {
   wif: 0xbc
 };
 
-libs.bitcoin.networks.blackcoin = {
+bitcoinjs.bitcoin.networks.blackcoin = {
   messagePrefix: '\x18BlackCoin Signed Message:\n',
   bip32: {
     public: 0x02CFBEDE,
@@ -437,7 +426,7 @@ libs.bitcoin.networks.blackcoin = {
   wif: 0x99
 };
 
-libs.bitcoin.networks.beetlecoin = {
+bitcoinjs.bitcoin.networks.beetlecoin = {
   messagePrefix: '\x19Beetlecoin Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -449,7 +438,7 @@ libs.bitcoin.networks.beetlecoin = {
 };
 
 
-libs.bitcoin.networks.adcoin = {
+bitcoinjs.bitcoin.networks.adcoin = {
   messagePrefix: '\x18AdCoin Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -460,7 +449,7 @@ libs.bitcoin.networks.adcoin = {
   wif: 0xb0,
 };
 
-libs.bitcoin.networks.asiacoin = {
+bitcoinjs.bitcoin.networks.asiacoin = {
   messagePrefix: '\x18AsiaCoin Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -471,7 +460,7 @@ libs.bitcoin.networks.asiacoin = {
   wif: 0x97,
 };
 
-libs.bitcoin.networks.auroracoin = {
+bitcoinjs.bitcoin.networks.auroracoin = {
   messagePrefix: '\x18AuroraCoin Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -482,7 +471,7 @@ libs.bitcoin.networks.auroracoin = {
   wif: 0x97,
 };
 
-libs.bitcoin.networks.bata = {
+bitcoinjs.bitcoin.networks.bata = {
   messagePrefix: '\x18Bata Signed Message:\n',
   bip32: {
     public: 0xA40C86FA,
@@ -493,7 +482,7 @@ libs.bitcoin.networks.bata = {
   wif: 0xa4,
 };
 
-libs.bitcoin.networks.belacoin = {
+bitcoinjs.bitcoin.networks.belacoin = {
   messagePrefix: '\x18BelaCoin Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -504,7 +493,7 @@ libs.bitcoin.networks.belacoin = {
   wif: 0x99,
 };
 
-libs.bitcoin.networks.atom = {
+bitcoinjs.bitcoin.networks.atom = {
   messagePrefix: '\x18Bitcoin Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -515,7 +504,7 @@ libs.bitcoin.networks.atom = {
   wif: 0x80,
 };
 
-libs.bitcoin.networks.bitcoinplus = {
+bitcoinjs.bitcoin.networks.bitcoinplus = {
   messagePrefix: '\x18BitcoinPlus Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -526,7 +515,7 @@ libs.bitcoin.networks.bitcoinplus = {
   wif: 0x99,
 };
 
-libs.bitcoin.networks.bitcloud = {
+bitcoinjs.bitcoin.networks.bitcloud = {
   messagePrefix: '\x18BitCloud Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -537,7 +526,7 @@ libs.bitcoin.networks.bitcloud = {
   wif: 0x99,
 };
 
-libs.bitcoin.networks.bitcore = {
+bitcoinjs.bitcoin.networks.bitcore = {
   messagePrefix: '\x18BitCore Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -548,7 +537,7 @@ libs.bitcoin.networks.bitcore = {
   wif: 0x80,
 };
 
-libs.bitcoin.networks.bitsend = {
+bitcoinjs.bitcoin.networks.bitsend = {
   messagePrefix: '\x18Bitsend Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -559,7 +548,7 @@ libs.bitcoin.networks.bitsend = {
   wif: 0xcc,
 };
 
-libs.bitcoin.networks.britcoin = {
+bitcoinjs.bitcoin.networks.britcoin = {
   messagePrefix: '\x18BritCoin Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -570,7 +559,7 @@ libs.bitcoin.networks.britcoin = {
   wif: 0x99,
 };
 
-libs.bitcoin.networks.canadaecoin = {
+bitcoinjs.bitcoin.networks.canadaecoin = {
   messagePrefix: '\x18Canada eCoin Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -581,7 +570,7 @@ libs.bitcoin.networks.canadaecoin = {
   wif: 0x9c,
 };
 
-libs.bitcoin.networks.cannacoin = {
+bitcoinjs.bitcoin.networks.cannacoin = {
   messagePrefix: '\x18Cannacoin Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -592,18 +581,7 @@ libs.bitcoin.networks.cannacoin = {
   wif: 0x9c,
 };
 
-libs.bitcoin.networks.cranepay = {
-  messagePrefix: '\x18Bitcoin Signed Message:\n',
-  bip32: {
-    public: 0x0488b21e,
-    private: 0x0488ade4
-  },
-  pubKeyHash: 28,
-  scriptHash: 10,
-  wif: 123,
-};
-
-libs.bitcoin.networks.cryptoescudo = {
+bitcoinjs.bitcoin.networks.cryptoescudo = {
   messagePrefix: '\x18Cryptoescudo Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -614,7 +592,7 @@ libs.bitcoin.networks.cryptoescudo = {
   wif: 0x9c,
 };
 
-libs.bitcoin.networks.clubcoin = {
+bitcoinjs.bitcoin.networks.clubcoin = {
   messagePrefix: '\x18ClubCoin Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -625,7 +603,7 @@ libs.bitcoin.networks.clubcoin = {
   wif: 0x99,
 };
 
-libs.bitcoin.networks.compcoin = {
+bitcoinjs.bitcoin.networks.compcoin = {
   messagePrefix: '\x18CompCoin Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -636,7 +614,7 @@ libs.bitcoin.networks.compcoin = {
   wif: 0x9c,
 };
 
-libs.bitcoin.networks.crave = {
+bitcoinjs.bitcoin.networks.crave = {
   messagePrefix: '\x18DarkNet Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -647,7 +625,7 @@ libs.bitcoin.networks.crave = {
   wif: 0x99,
 };
 
-libs.bitcoin.networks.defcoin = {
+bitcoinjs.bitcoin.networks.defcoin = {
   messagePrefix: '\x18defcoin Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -658,7 +636,7 @@ libs.bitcoin.networks.defcoin = {
   wif: 0x9e,
 };
 
-libs.bitcoin.networks.diamond = {
+bitcoinjs.bitcoin.networks.diamond = {
   messagePrefix: '\x18Diamond Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -669,7 +647,7 @@ libs.bitcoin.networks.diamond = {
   wif: 0xda,
 };
 
-libs.bitcoin.networks.digibyte = {
+bitcoinjs.bitcoin.networks.digibyte = {
   messagePrefix: '\x19DigiByte Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -680,7 +658,7 @@ libs.bitcoin.networks.digibyte = {
   wif: 0x80,
 };
 
-libs.bitcoin.networks.digitalcoin = {
+bitcoinjs.bitcoin.networks.digitalcoin = {
   messagePrefix: '\x18Digitalcoin Signed Message:\n',
   bip32: {
     public: 0x9e0488B2,
@@ -691,7 +669,7 @@ libs.bitcoin.networks.digitalcoin = {
   wif: 0x9e,
 };
 
-libs.bitcoin.networks.ecoin = {
+bitcoinjs.bitcoin.networks.ecoin = {
   messagePrefix: '\x18eCoin Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -702,7 +680,7 @@ libs.bitcoin.networks.ecoin = {
   wif: 0xdc,
 };
 
-libs.bitcoin.networks.edrcoin = {
+bitcoinjs.bitcoin.networks.edrcoin = {
   messagePrefix: '\x18EDRcoin Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -713,7 +691,7 @@ libs.bitcoin.networks.edrcoin = {
   wif: 0xdd,
 };
 
-libs.bitcoin.networks.egulden = {
+bitcoinjs.bitcoin.networks.egulden = {
   messagePrefix: '\x18Egulden Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -724,7 +702,7 @@ libs.bitcoin.networks.egulden = {
   wif: 0xb0,
 };
 
-libs.bitcoin.networks.einsteinium = {
+bitcoinjs.bitcoin.networks.einsteinium = {
   messagePrefix: '\x18Einsteinium Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -735,7 +713,7 @@ libs.bitcoin.networks.einsteinium = {
   wif: 0xa1,
 };
 
-libs.bitcoin.networks.europecoin = {
+bitcoinjs.bitcoin.networks.europecoin = {
   messagePrefix: '\x18Bitcoin Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -746,7 +724,7 @@ libs.bitcoin.networks.europecoin = {
   wif: 0xa8,
 };
 
-libs.bitcoin.networks.exclusivecoin = {
+bitcoinjs.bitcoin.networks.exclusivecoin = {
   messagePrefix: '\x18ExclusiveCoin Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -757,7 +735,7 @@ libs.bitcoin.networks.exclusivecoin = {
   wif: 0xa1,
 };
 
-libs.bitcoin.networks.feathercoin = {
+bitcoinjs.bitcoin.networks.feathercoin = {
   messagePrefix: '\x18Feathercoin Signed Message:\n',
   bip32: {
     public: 0x0488BC26,
@@ -768,29 +746,7 @@ libs.bitcoin.networks.feathercoin = {
   wif: 0x8e,
 };
 
-libs.bitcoin.networks.firo = {
-  messagePrefix: '\x18Firo Signed Message:\n',
-  bip32: {
-    public: 0x0488B21E,
-    private: 0x0488ADE4,
-  },
-  pubKeyHash: 0x52,
-  scriptHash: 0x07,
-  wif: 0xd2,
-};
-
-libs.bitcoin.networks.zcoin = {
-  messagePrefix: '\x18Zcoin Signed Message:\n',
-  bip32: {
-    public: 0x0488B21E,
-    private: 0x0488ADE4,
-  },
-  pubKeyHash: 0x52,
-  scriptHash: 0x07,
-  wif: 0xd2,
-};
-
-libs.bitcoin.networks.firstcoin = {
+bitcoinjs.bitcoin.networks.firstcoin = {
   messagePrefix: '\x18FirstCoin Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -801,7 +757,7 @@ libs.bitcoin.networks.firstcoin = {
   wif: 0xa3,
 };
 
-libs.bitcoin.networks.flashcoin = {
+bitcoinjs.bitcoin.networks.flashcoin = {
   messagePrefix: '\x18Flashcoin Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -812,7 +768,7 @@ libs.bitcoin.networks.flashcoin = {
   wif: 0xc4,
 };
 
-libs.bitcoin.networks.gcr = {
+bitcoinjs.bitcoin.networks.gcr = {
   messagePrefix: '\x18GCR Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -823,7 +779,7 @@ libs.bitcoin.networks.gcr = {
   wif: 0x9a,
 };
 
-libs.bitcoin.networks.gobyte = {
+bitcoinjs.bitcoin.networks.gobyte = {
   messagePrefix: '\x18DarkCoin Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -834,7 +790,7 @@ libs.bitcoin.networks.gobyte = {
   wif: 0xc6,
 };
 
-libs.bitcoin.networks.gridcoin = {
+bitcoinjs.bitcoin.networks.gridcoin = {
   messagePrefix: '\x18Gridcoin Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -845,29 +801,7 @@ libs.bitcoin.networks.gridcoin = {
   wif: 0xbe,
 };
 
-libs.bitcoin.networks.groestlcoin = {
-  messagePrefix: '\x19GroestlCoin Signed Message:\n',
-  bip32: {
-    public: 0x0488b21e,
-    private: 0x0488ade4
-  },
-  pubKeyHash: 36,
-  scriptHash: 5,
-  wif: 128,
-}
-
-libs.bitcoin.networks.groestlcointestnet = {
-  messagePrefix: '\x19GroestlCoin Signed Message:\n',
-  bip32: {
-    public: 0x043587cf,
-    private: 0x04358394
-  },
-  pubKeyHash: 0x6f,
-  scriptHash: 0xc4,
-  wif: 0xef,
-}
-
-libs.bitcoin.networks.gulden = {
+bitcoinjs.bitcoin.networks.gulden = {
   messagePrefix: '\x18Guldencoin Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -878,7 +812,7 @@ libs.bitcoin.networks.gulden = {
   wif: 0x62,
 };
 
-libs.bitcoin.networks.helleniccoin = {
+bitcoinjs.bitcoin.networks.helleniccoin = {
   messagePrefix: '\x18helleniccoin Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -889,7 +823,7 @@ libs.bitcoin.networks.helleniccoin = {
   wif: 0xb0,
 };
 
-libs.bitcoin.networks.hempcoin = {
+bitcoinjs.bitcoin.networks.hempcoin = {
   messagePrefix: '\x18Hempcoin Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -900,7 +834,7 @@ libs.bitcoin.networks.hempcoin = {
   wif: 0xa8,
 };
 
-libs.bitcoin.networks.insane = {
+bitcoinjs.bitcoin.networks.insane = {
   messagePrefix: '\x18INSaNe Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -911,7 +845,7 @@ libs.bitcoin.networks.insane = {
   wif: 0x37,
 };
 
-libs.bitcoin.networks.iop = {
+bitcoinjs.bitcoin.networks.iop = {
   messagePrefix: '\x18IoP Signed Message:\n',
   bip32: {
     public: 0x2780915F,
@@ -922,7 +856,7 @@ libs.bitcoin.networks.iop = {
   wif: 0x31,
 };
 
-libs.bitcoin.networks.ixcoin = {
+bitcoinjs.bitcoin.networks.ixcoin = {
   messagePrefix: '\x18Ixcoin Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -933,7 +867,7 @@ libs.bitcoin.networks.ixcoin = {
   wif: 0x80,
 };
 
-libs.bitcoin.networks.kobocoin = {
+bitcoinjs.bitcoin.networks.kobocoin = {
   messagePrefix: '\x18Kobocoin Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -944,7 +878,7 @@ libs.bitcoin.networks.kobocoin = {
   wif: 0xa3,
 };
 
-libs.bitcoin.networks.landcoin = {
+bitcoinjs.bitcoin.networks.landcoin = {
   messagePrefix: '\x18Landcoin Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -955,7 +889,7 @@ libs.bitcoin.networks.landcoin = {
   wif: 0xb0,
 };
 
-libs.bitcoin.networks.lbry = {
+bitcoinjs.bitcoin.networks.lbry = {
   messagePrefix: '\x18LBRYcrd Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -966,7 +900,7 @@ libs.bitcoin.networks.lbry = {
   wif: 0x1c,
 };
 
-libs.bitcoin.networks.linx = {
+bitcoinjs.bitcoin.networks.linx = {
   messagePrefix: '\x18LinX Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -978,7 +912,7 @@ libs.bitcoin.networks.linx = {
 };
 
 
-libs.bitcoin.networks.litecointestnet = {
+bitcoinjs.bitcoin.networks.litecointestnet = {
   messagePrefix: '\x18Litecoin Signed Message:\n',
   bip32: {
     public: 0x043587cf,
@@ -988,7 +922,7 @@ libs.bitcoin.networks.litecointestnet = {
   scriptHash: 0xc4,
   wif: 0xef,
 };
-libs.bitcoin.networks.litecoincash = {
+bitcoinjs.bitcoin.networks.litecoincash = {
   messagePrefix: '\x18Litecoin Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -999,7 +933,7 @@ libs.bitcoin.networks.litecoincash = {
   wif: 0xb0,
 };
 
-libs.bitcoin.networks.lynx = {
+bitcoinjs.bitcoin.networks.lynx = {
   messagePrefix: '\x18Lynx Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -1010,7 +944,7 @@ libs.bitcoin.networks.lynx = {
   wif: 0xad,
 };
 
-libs.bitcoin.networks.megacoin = {
+bitcoinjs.bitcoin.networks.megacoin = {
   messagePrefix: '\x18Megacoin Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -1021,7 +955,7 @@ libs.bitcoin.networks.megacoin = {
   wif: 0xB2,
 };
 
-libs.bitcoin.networks.minexcoin = {
+bitcoinjs.bitcoin.networks.minexcoin = {
   messagePrefix: '\x18Bitcoin Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -1032,7 +966,7 @@ libs.bitcoin.networks.minexcoin = {
   wif: 0x80,
 };
 
-libs.bitcoin.networks.navcoin = {
+bitcoinjs.bitcoin.networks.navcoin = {
   messagePrefix: '\x18Navcoin Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -1043,7 +977,7 @@ libs.bitcoin.networks.navcoin = {
   wif: 0x96,
 };
 
-libs.bitcoin.networks.neoscoin = {
+bitcoinjs.bitcoin.networks.neoscoin = {
   messagePrefix: '\x18NeosCoin Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -1054,7 +988,7 @@ libs.bitcoin.networks.neoscoin = {
   wif: 0xb1,
 };
 
-libs.bitcoin.networks.nix = {
+bitcoinjs.bitcoin.networks.nix = {
   messagePrefix: '\x18Nix Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -1065,7 +999,7 @@ libs.bitcoin.networks.nix = {
   wif: 0x80,
 };
 
-libs.bitcoin.networks.neurocoin = {
+bitcoinjs.bitcoin.networks.neurocoin = {
   messagePrefix: '\x18PPCoin Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -1076,7 +1010,7 @@ libs.bitcoin.networks.neurocoin = {
   wif: 0xb5,
 };
 
-libs.bitcoin.networks.newyorkc = {
+bitcoinjs.bitcoin.networks.newyorkc = {
   messagePrefix: '\x18newyorkc Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -1087,7 +1021,7 @@ libs.bitcoin.networks.newyorkc = {
   wif: 0xbc,
 };
 
-libs.bitcoin.networks.novacoin = {
+bitcoinjs.bitcoin.networks.novacoin = {
   messagePrefix: '\x18NovaCoin Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -1098,7 +1032,7 @@ libs.bitcoin.networks.novacoin = {
   wif: 0x88,
 };
 
-libs.bitcoin.networks.nushares = {
+bitcoinjs.bitcoin.networks.nushares = {
   messagePrefix: '\x18Nu Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -1109,7 +1043,7 @@ libs.bitcoin.networks.nushares = {
   wif: 0x95,
 };
 
-libs.bitcoin.networks.okcash = {
+bitcoinjs.bitcoin.networks.okcash = {
   messagePrefix: '\x18OKCash Signed Message:\n',
   bip32: {
     public: 0x03CC23D7,
@@ -1120,7 +1054,7 @@ libs.bitcoin.networks.okcash = {
   wif: 0x03,
 };
 
-libs.bitcoin.networks.omnicore = {
+bitcoinjs.bitcoin.networks.omnicore = {
   messagePrefix: '\x18Bitcoin Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -1131,7 +1065,7 @@ libs.bitcoin.networks.omnicore = {
   wif: 0x80,
 };
 
-libs.bitcoin.networks.pesobit = {
+bitcoinjs.bitcoin.networks.pesobit = {
   messagePrefix: '\x18Pesobit Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -1142,7 +1076,7 @@ libs.bitcoin.networks.pesobit = {
   wif: 0xb7,
 };
 
-libs.bitcoin.networks.pinkcoin = {
+bitcoinjs.bitcoin.networks.pinkcoin = {
   messagePrefix: '\x18Pinkcoin Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -1153,7 +1087,7 @@ libs.bitcoin.networks.pinkcoin = {
   wif: 0x83,
 };
 
-libs.bitcoin.networks.poswcoin = {
+bitcoinjs.bitcoin.networks.poswcoin = {
   messagePrefix: '\x18Poswcoin Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -1164,7 +1098,7 @@ libs.bitcoin.networks.poswcoin = {
   wif: 0xb7,
 };
 
-libs.bitcoin.networks.potcoin = {
+bitcoinjs.bitcoin.networks.potcoin = {
   messagePrefix: '\x18Potcoin Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -1175,7 +1109,7 @@ libs.bitcoin.networks.potcoin = {
   wif: 0xb7,
 };
 
-libs.bitcoin.networks.putincoin = {
+bitcoinjs.bitcoin.networks.putincoin = {
   messagePrefix: '\x18PutinCoin Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -1186,7 +1120,7 @@ libs.bitcoin.networks.putincoin = {
   wif: 0xb7,
 };
 
-libs.bitcoin.networks.ravencoin = {
+bitcoinjs.bitcoin.networks.ravencoin = {
   messagePrefix: '\x16Raven Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -1197,7 +1131,7 @@ libs.bitcoin.networks.ravencoin = {
   wif: 0x80,
 };
 
-libs.bitcoin.networks.reddcoin = {
+bitcoinjs.bitcoin.networks.reddcoin = {
   messagePrefix: '\x18Reddcoin Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -1208,7 +1142,7 @@ libs.bitcoin.networks.reddcoin = {
   wif: 0xbd,
 };
 
-libs.bitcoin.networks.revolutionvr = {
+bitcoinjs.bitcoin.networks.revolutionvr = {
   messagePrefix: '\x18Voxels Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -1219,43 +1153,7 @@ libs.bitcoin.networks.revolutionvr = {
   wif: 0xc6,
 };
 
-libs.bitcoin.networks.ritocoin = {
-  messagePrefix: '\x15Rito Signed Message:\n',
-  bip32: {
-    public: 0x0488B21E,
-    private: 0x0488ADE4,
-  },
-  pubKeyHash: 0x19,
-  scriptHash: 0x69,
-  wif: 0x8b,
-};
-
-libs.bitcoin.networks.rsk = {
-  messagePrefix: '\x18RSK Signed Message:\n',
-  bip32: {
-    public: 0x0488b21e,
-    private: 0x0488ade4
-  },
-  // TODO defaulting to Bitcoin value, check this
-  pubKeyHash: 0x00,
-  // TODO defaulting to Bitcoin value, check this
-  scriptHash: 0x05,
-  // TODO defaulting to Bitcoin value, check this
-  wif: 0x80
-};
-
-libs.bitcoin.networks.rsktestnet = {
-  messagePrefix: '\x18RSK Testnet Signed Message:\n',
-  bip32: {
-    public: 0x043587cf,
-    private: 0x04358394
-  },
-  pubKeyHash: 0x6f,
-  scriptHash: 0xc4,
-  wif: 0xef
-};
-
-libs.bitcoin.networks.rubycoin = {
+bitcoinjs.bitcoin.networks.rubycoin = {
   messagePrefix: '\x18Rubycoin Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -1266,7 +1164,7 @@ libs.bitcoin.networks.rubycoin = {
   wif: 0xbc,
 };
 
-libs.bitcoin.networks.safecoin = {
+bitcoinjs.bitcoin.networks.safecoin = {
   messagePrefix: '\x18Safecoin Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -1277,7 +1175,7 @@ libs.bitcoin.networks.safecoin = {
   wif: 0xbd,
 };
 
-libs.bitcoin.networks.salus = {
+bitcoinjs.bitcoin.networks.salus = {
 messagePrefix: '\x18Salus Signed Message:\n',
 bip32: {
   public: 0x0488B21E,
@@ -1288,7 +1186,7 @@ scriptHash: 0xc4,
 wif: 0xbf,
 };
 
-libs.bitcoin.networks.smileycoin = {
+bitcoinjs.bitcoin.networks.smileycoin = {
   messagePrefix: '\x18Smileycoin Signed Message:\n',
   bip32: {
     public: 0x1E562D9A,
@@ -1299,7 +1197,7 @@ libs.bitcoin.networks.smileycoin = {
   wif: 0x05,
 };
 
-libs.bitcoin.networks.solarcoin = {
+bitcoinjs.bitcoin.networks.solarcoin = {
   messagePrefix: '\x18SolarCoin Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -1310,7 +1208,7 @@ libs.bitcoin.networks.solarcoin = {
   wif: 0x92,
 };
 
-libs.bitcoin.networks.stash = {
+bitcoinjs.bitcoin.networks.stash = {
   messagePrefix: '\x18Stash Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -1321,7 +1219,7 @@ libs.bitcoin.networks.stash = {
   wif: 0xcc
 };
 
-libs.bitcoin.networks.stashtn = {
+bitcoinjs.bitcoin.networks.stashtn = {
   messagePrefix: '\x18Stash Test Signed Message:\n',
   bip32: {
     public: 0x043587cf,
@@ -1332,7 +1230,7 @@ libs.bitcoin.networks.stashtn = {
   wif: 0xef
 };
 
-libs.bitcoin.networks.stratis = {
+bitcoinjs.bitcoin.networks.stratis = {
   messagePrefix: '\x18Stratis Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -1343,7 +1241,7 @@ libs.bitcoin.networks.stratis = {
   wif: 0xbf,
 };
 
-libs.bitcoin.networks.stratistest = {
+bitcoinjs.bitcoin.networks.stratistest = {
   messagePrefix: '\x18Stratis Test Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -1354,7 +1252,7 @@ libs.bitcoin.networks.stratistest = {
   wif: 0xbf,
 };
 
-libs.bitcoin.networks.syscoin = {
+bitcoinjs.bitcoin.networks.syscoin = {
   messagePrefix: '\x18Syscoin Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -1366,7 +1264,7 @@ libs.bitcoin.networks.syscoin = {
 };
 
 
-libs.bitcoin.networks.toa = {
+bitcoinjs.bitcoin.networks.toa = {
   messagePrefix: '\x18TOA Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -1377,7 +1275,7 @@ libs.bitcoin.networks.toa = {
   wif: 0xc1,
 };
 
-libs.bitcoin.networks.twins = {
+bitcoinjs.bitcoin.networks.twins = {
   messagePrefix: 'unused',
   bip32: {
     public: 0x022d2533,
@@ -1388,7 +1286,7 @@ libs.bitcoin.networks.twins = {
   wif: 0x42
 };
 
-libs.bitcoin.networks.twinstestnet = {
+bitcoinjs.bitcoin.networks.twinstestnet = {
   messagePrefix: 'unused',
   bip32: {
     public: 0x3a8061a0,
@@ -1399,7 +1297,7 @@ libs.bitcoin.networks.twinstestnet = {
   wif: 0xED
 };
 
-libs.bitcoin.networks.ultimatesecurecash = {
+bitcoinjs.bitcoin.networks.ultimatesecurecash = {
   messagePrefix: '\x18UltimateSecureCash Signed Message:\n',
   bip32: {
     public: 0xEE80286A,
@@ -1410,7 +1308,7 @@ libs.bitcoin.networks.ultimatesecurecash = {
   wif: 0xbf,
 };
 
-libs.bitcoin.networks.unobtanium = {
+bitcoinjs.bitcoin.networks.unobtanium = {
   messagePrefix: '\x18Unobtanium Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -1421,7 +1319,7 @@ libs.bitcoin.networks.unobtanium = {
   wif: 0xe0,
 };
 
-libs.bitcoin.networks.vcash = {
+bitcoinjs.bitcoin.networks.vcash = {
   messagePrefix: '\x18Vcash Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -1432,7 +1330,7 @@ libs.bitcoin.networks.vcash = {
   wif: 0xc7,
 };
 
-libs.bitcoin.networks.verge = {
+bitcoinjs.bitcoin.networks.verge = {
   messagePrefix: '\x18VERGE Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -1443,7 +1341,7 @@ libs.bitcoin.networks.verge = {
   wif: 0x9e,
 };
 
-libs.bitcoin.networks.vertcoin = {
+bitcoinjs.bitcoin.networks.vertcoin = {
   messagePrefix: '\x18Vertcoin Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -1454,7 +1352,7 @@ libs.bitcoin.networks.vertcoin = {
   wif: 0x80,
 };
 
-libs.bitcoin.networks.vivo = {
+bitcoinjs.bitcoin.networks.vivo = {
   messagePrefix: '\x18DarkCoin Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -1465,7 +1363,7 @@ libs.bitcoin.networks.vivo = {
   wif: 0xc6,
 };
 
-libs.bitcoin.networks.vpncoin = {
+bitcoinjs.bitcoin.networks.vpncoin = {
   messagePrefix: '\x18VpnCoin Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -1476,7 +1374,7 @@ libs.bitcoin.networks.vpncoin = {
   wif: 0xc7,
 };
 
-libs.bitcoin.networks.whitecoin = {
+bitcoinjs.bitcoin.networks.whitecoin = {
   messagePrefix: '\x18Whitecoin Signed Message:\n',
   bip32: {
     public: 0x04887F1E,
@@ -1487,7 +1385,7 @@ libs.bitcoin.networks.whitecoin = {
   wif: 0xc9,
 };
 
-libs.bitcoin.networks.wincoin = {
+bitcoinjs.bitcoin.networks.wincoin = {
   messagePrefix: '\x18WinCoin Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -1498,7 +1396,18 @@ libs.bitcoin.networks.wincoin = {
   wif: 0xc9,
 };
 
-libs.bitcoin.networks.zcash = {
+bitcoinjs.bitcoin.networks.zcoin = {
+  messagePrefix: '\x18Zcoin Signed Message:\n',
+  bip32: {
+    public: 0x0488B21E,
+    private: 0x0488ADE4,
+  },
+  pubKeyHash: 0x52,
+  scriptHash: 0x07,
+  wif: 0xd2,
+};
+
+bitcoinjs.bitcoin.networks.zcash = {
   messagePrefix: '\x18Zcash Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -1509,7 +1418,7 @@ libs.bitcoin.networks.zcash = {
   wif: 0x80,
 };
 
-libs.bitcoin.networks.xuez = {
+bitcoinjs.bitcoin.networks.xuez = {
   messagePrefix: 'unused',
   bip32: {
     public: 0x022d2533,
@@ -1520,7 +1429,7 @@ libs.bitcoin.networks.xuez = {
   wif: 0xd4
 };
 
-libs.bitcoin.networks.bitcoinprivate = {
+bitcoinjs.bitcoin.networks.bitcoinprivate = {
   messagePrefix: '\x18BitcoinPrivate Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -1531,7 +1440,7 @@ libs.bitcoin.networks.bitcoinprivate = {
   wif: 0x80,
 };
 
-libs.bitcoin.networks.bitcoinz = {
+bitcoinjs.bitcoin.networks.bitcoinz = {
   messagePrefix: '\x18BitcoinZ Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -1542,7 +1451,7 @@ libs.bitcoin.networks.bitcoinz = {
   wif: 0x80,
 };
 
-libs.bitcoin.networks.hush = {
+bitcoinjs.bitcoin.networks.hush = {
   messagePrefix: '\x18Hush Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -1553,7 +1462,7 @@ libs.bitcoin.networks.hush = {
   wif: 0x80,
 };
 
-libs.bitcoin.networks.hush3 = {
+bitcoinjs.bitcoin.networks.hush3 = {
   messagePrefix: '\x18Hush Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -1564,19 +1473,7 @@ libs.bitcoin.networks.hush3 = {
   wif: 0xBC,
 };
 
-libs.bitcoin.networks.zoobc = {
-  messagePrefix: '\x18ZooBC Signed Message:\n',
-  bech32: 'bc',
-  bip32: {
-    public: 0x0488b21e,
-    private: 0x0488ade4,
-  },
-  pubKeyHash: 0x00,
-  scriptHash: 0x05,
-  wif: 0x80,
-};
-
-libs.bitcoin.networks.zclassic = {
+bitcoinjs.bitcoin.networks.zclassic = {
   messagePrefix: '\x18Zcash Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -1587,7 +1484,7 @@ libs.bitcoin.networks.zclassic = {
   wif: 0x80,
 };
 
-libs.bitcoin.networks.zencash = {
+bitcoinjs.bitcoin.networks.zencash = {
   messagePrefix: '\x18Zcash Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -1598,7 +1495,7 @@ libs.bitcoin.networks.zencash = {
   wif: 0x80,
 };
 
-libs.bitcoin.networks.energi = {
+bitcoinjs.bitcoin.networks.energi = {
   messagePrefix: 'DarkCoin Signed Message:\n',
   bip32: {
     public: 0x03B8C856,
@@ -1609,7 +1506,7 @@ libs.bitcoin.networks.energi = {
   wif: 0x6a,
 };
 
-libs.bitcoin.networks.exchangecoin = {
+bitcoinjs.bitcoin.networks.exchangecoin = {
   messagePrefix: 'ExchangeCoin Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -1620,7 +1517,7 @@ libs.bitcoin.networks.exchangecoin = {
   wif: 0x80,
 };
 
-libs.bitcoin.networks.artax = {
+bitcoinjs.bitcoin.networks.artax = {
   messagePrefix: '\x18Artax Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -1631,7 +1528,7 @@ libs.bitcoin.networks.artax = {
   wif: 0x97,
 };
 
-libs.bitcoin.networks.bitcoingreen = {
+bitcoinjs.bitcoin.networks.bitcoingreen = {
   messagePrefix: '\x18BitcoinGreen Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -1642,7 +1539,7 @@ libs.bitcoin.networks.bitcoingreen = {
   wif:  0x2E,
 };
 
-libs.bitcoin.networks.anon = {
+bitcoinjs.bitcoin.networks.anon = {
 	messagePrefix: '\x18ANON Signed Message:\n',
 	bip32: {
 		public: 0x0488b21e,
@@ -1653,7 +1550,7 @@ libs.bitcoin.networks.anon = {
 	wif: 0x80
 };
 
-libs.bitcoin.networks.projectcoin = {
+bitcoinjs.bitcoin.networks.projectcoin = {
   messagePrefix: '\x18ProjectCoin Signed Message:\n',
   bip32: {
     public: 0x022D2533,
@@ -1664,7 +1561,7 @@ libs.bitcoin.networks.projectcoin = {
   wif:  0x75,
 };
 
-libs.bitcoin.networks.phore = {
+bitcoinjs.bitcoin.networks.phore = {
   messagePrefix: '\x18Phore Signed Message:\n',
   bip32: {
     public: 0x022D2533,
@@ -1675,7 +1572,7 @@ libs.bitcoin.networks.phore = {
   wif:  0xD4,
 };
 
-libs.bitcoin.networks.blocknode = {
+bitcoinjs.bitcoin.networks.blocknode = {
   messagePrefix: '\x18Blocknode Signed Message:\n',
   bip32: {
 	public: 0x0488b21e,
@@ -1686,7 +1583,7 @@ libs.bitcoin.networks.blocknode = {
   wif:  0x4b,
 };
 
-libs.bitcoin.networks.blocknode_testnet = {
+bitcoinjs.bitcoin.networks.blocknode_testnet = {
   messagePrefix: '\x18Blocknode Testnet Signed Message:\n',
   bip32: {
 	public: 0x043587cf,
@@ -1697,7 +1594,7 @@ libs.bitcoin.networks.blocknode_testnet = {
   wif:  0x89,
 };
 
-libs.bitcoin.networks.litecoinz = {
+bitcoinjs.bitcoin.networks.litecoinz = {
   messagePrefix: '\x18LitecoinZ Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -1708,7 +1605,7 @@ libs.bitcoin.networks.litecoinz = {
   wif:  0x80,
 };
 
-libs.bitcoin.networks.blockstamp = {
+bitcoinjs.bitcoin.networks.blockstamp = {
   messagePrefix: '\x18BlockStamp Signed Message:\n',
   bip32: {
     public: 0x0488B21E,
@@ -1719,7 +1616,7 @@ libs.bitcoin.networks.blockstamp = {
   wif:  0x80,
 };
 
-libs.bitcoin.networks.deeponion = {
+bitcoinjs.bitcoin.networks.deeponion = {
     messagePrefix: 'x18DeepOnion Signed Message:\n',
     bip32: {
       public: 0x0488B21E,
@@ -1731,7 +1628,7 @@ libs.bitcoin.networks.deeponion = {
 };
 
 
-libs.bitcoin.networks.cpuchain = {
+bitcoinjs.bitcoin.networks.cpuchain = {
     messagePrefix: 'x18CPUchain Signed Message:\n',
     bip32: {
       public: 0x0488B21E,
@@ -1742,7 +1639,7 @@ libs.bitcoin.networks.cpuchain = {
     wif: 0x80,
 };
 
-libs.bitcoin.networks.wagerr = {
+bitcoinjs.bitcoin.networks.wagerr = {
   messagePrefix: 'unused',
   bip32: {
     public: 0x022d2533,
@@ -1753,7 +1650,7 @@ libs.bitcoin.networks.wagerr = {
   wif: 0xc7
 };
 
-libs.bitcoin.networks.bitcoinsv = {
+bitcoinjs.bitcoin.networks.bitcoinsv = {
   messagePrefix: 'unused',
   bip32: {
     public: 0x0488b21e,
@@ -1764,7 +1661,7 @@ libs.bitcoin.networks.bitcoinsv = {
   wif: 0x80
 };
 
-libs.bitcoin.networks.monkeyproject = {
+bitcoinjs.bitcoin.networks.monkeyproject = {
   messagePrefix: 'Monkey Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -1775,7 +1672,7 @@ libs.bitcoin.networks.monkeyproject = {
   wif: 0x37
 };
 
-libs.bitcoin.networks.rapids = {
+bitcoinjs.bitcoin.networks.rapids = {
   messagePrefix: 'DarkNet Signed Message:\n',
   bip32: {
     public: 0x0488b21e,
@@ -1786,7 +1683,7 @@ libs.bitcoin.networks.rapids = {
   wif: 0x2e
 };
 
-libs.bitcoin.networks.aryacoin = {
+bitcoinjs.bitcoin.networks.aryacoin = {
   messagePrefix: '\x18Aryacoin Signed Message:\n',
   bech32: 'arya',
   bip32: {
@@ -1796,72 +1693,4 @@ libs.bitcoin.networks.aryacoin = {
   pubKeyHash: 0x17,
   scriptHash: 0x6f,
   wif: 0x97
-};
-
-libs.bitcoin.networks.thought = {
-  messagePrefix: 'unused',
-  bip32: {
-    public: 0xFbC6A00D,
-    private: 0x5AEBD8C6
-  },
-  pubKeyHash: 0x07,
-  scriptHash: 0x09,
-  wif: 0x7B
-};
-
-libs.bitcoin.networks.elastos = {
-    messagePrefix: 'unused',
-    bip32: {
-        public: 0x0488B21E,
-        private: 0x0488ADE4,
-    },
-    pubKeyHash: 0x21,
-    scriptHash: 0xc4, // TODO set this correctly, same as BTC for now
-    wif: 0xef // TODO set this correctly, same as BTC for now
-};
-
-libs.bitcoin.networks.sugarchain = {
-    messagePrefix: '\x18Sugarchain Signed Message:\n',
-    bip32: {
-        public: 0x0488B21E,
-        private: 0x0488ADE4,
-    },
-    pubKeyHash: 0x3f,
-    scriptHash: 0x7d,
-    wif: 0x80
-};
-
-libs.bitcoin.networks.sugarchaintestnet = {
-    messagePrefix: '\x18Sugarchain Signed Message:\n',
-    bip32: {
-        public: 0x045f1cf6,
-        private: 0x045f18bc,
-    },
-    pubKeyHash: 0x42,
-    scriptHash: 0x80,
-    wif: 0xef
-};
-
-// https://github.com/libs.bitcoinjs-lib/blob/3f6f5ef97a1ee1b8337865209282c0095e22b2e7/src/networks.js
-libs.bitcoin.networks.regtest = {
-  messagePrefix: '\x18Bitcoin Signed Message:\n',
-  bech32: 'bcrt',
-  bip32: {
-    public: 0x043587cf,
-    private: 0x04358394,
-  },
-  pubKeyHash: 0x6f,
-  scriptHash: 0xc4,
-  wif: 0xef,
-};
-
-libs.bitcoin.networks.argoneum = {
-  messagePrefix: 'unused',
-  bip32: {
-    public: 0x0488b21e,
-    private: 0x0488ade4
-  },
-  pubKeyHash: 0x32,
-  scriptHash: 0x61,
-  wif: 0xbf
 };
